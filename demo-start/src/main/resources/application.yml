@@ -1,0 +1,6 @@
+server:
+  port: 8311
+
+spring:
+  profiles:
+    active: test

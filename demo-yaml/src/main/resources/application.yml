@@ -1,0 +1,19 @@
+# 配置SpringBoot内嵌容器端口
+server:
+  port: 8304
+
+# 配置当前环境的profile
+spring:
+  profiles:
+    active: test
+
+#自定义的属性和值
+interface-information: #自定义的属性和值
+  simpleProp: simplePropValue
+  arrayProps: 1,2,3,4,5
+  listProps:
+      - config2Value1
+      - config2Vavlue2
+  mapProps:
+    key1: value1
+    key2: value2
