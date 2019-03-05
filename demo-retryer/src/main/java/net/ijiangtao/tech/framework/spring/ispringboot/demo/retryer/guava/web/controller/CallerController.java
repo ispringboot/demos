@@ -1,13 +1,16 @@
 package net.ijiangtao.tech.framework.spring.ispringboot.demo.retryer.guava.web.controller;
 
-import com.github.rholder.retry.*;
+import com.github.rholder.retry.Retryer;
+import com.github.rholder.retry.RetryerBuilder;
+import com.github.rholder.retry.StopStrategies;
 import com.google.common.base.Predicates;
 import lombok.extern.slf4j.Slf4j;
+import net.ijiangtao.tech.framework.spring.ispringboot.demo.retryer.guava.listener.RetryLogListener;
+import net.ijiangtao.tech.framework.spring.ispringboot.demo.retryer.guava.strategy.AlipayWaitStrategy;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.concurrent.Callable;
-import java.util.concurrent.TimeUnit;
 
 @RestController
 @Slf4j
@@ -28,13 +31,13 @@ public class CallerController {
                 .retryIfResult(Predicates.equalTo(false))
 
                 //等待策略：每次请求间隔1s
-                .withWaitStrategy(WaitStrategies.fixedWait(1, TimeUnit.SECONDS))
-
+                //.withWaitStrategy(WaitStrategies.fixedWait(1, TimeUnit.SECONDS))
+                .withWaitStrategy(new AlipayWaitStrategy())
                 //停止策略 : 尝试请求6次
                 .withStopStrategy(StopStrategies.stopAfterAttempt(6))
 
                 //时间限制 : 某次请求不得超过2s , 类似: TimeLimiter timeLimiter = new SimpleTimeLimiter();
-                .withAttemptTimeLimiter(AttemptTimeLimiters.fixedTimeLimit(2, TimeUnit.SECONDS))
+                //.withAttemptTimeLimiter(AttemptTimeLimiters.fixedTimeLimit(2, TimeUnit.SECONDS))
 
                 //默认的阻塞策略：线程睡眠
                 //.withBlockStrategy(BlockStrategies.threadSleepStrategy())
@@ -42,7 +45,7 @@ public class CallerController {
                 //.withBlockStrategy(new SpinBlockStrategy())
 
                 //自定义重试监听器
-                //.withRetryListener(new RetryLogListener())
+                .withRetryListener(new RetryLogListener())
 
                 .build();
 
