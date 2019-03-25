@@ -1,6 +1,5 @@
-package net.ijiangtao.tech.framework.spring.ispringboot.demo.demostart;
+package net.ijiangtao.tech.framework.spring.ispringboot.demo.start;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
