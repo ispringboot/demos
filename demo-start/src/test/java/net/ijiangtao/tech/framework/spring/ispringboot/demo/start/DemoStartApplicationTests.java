@@ -1,4 +1,4 @@
-package net.ijiangtao.tech.framework.spring.ispringboot.demo.demostart;
+package net.ijiangtao.tech.framework.spring.ispringboot.demo.start;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
