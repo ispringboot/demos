@@ -20,13 +20,15 @@
 
     <dependencies>
 
-        <!-- guava retry -->
-        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
-        <dependency>
+        <!-- guava retry
+
+         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>19.0</version>
         </dependency>
+         -->
+
 
         <!-- https://mvnrepository.com/artifact/com.github.rholder/guava-retrying -->
         <dependency>
@@ -45,6 +47,7 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

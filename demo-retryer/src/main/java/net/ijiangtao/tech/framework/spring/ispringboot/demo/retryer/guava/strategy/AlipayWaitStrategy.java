@@ -6,6 +6,7 @@ import com.github.rholder.retry.WaitStrategy;
 /**
  * 自定义等待策略：根据重试次数动态调节等待时间，第一次请求间隔1s，第二次间隔10s，第三次及以后都是20s。
  *
+ *
  * 在创建Retryer的时候通过withWaitStrategy将该等待策略生效即可。
  *
  *  RetryerBuilder.<Boolean>newBuilder()

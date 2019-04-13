@@ -27,7 +27,7 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>[10.+,)</version>
+            <version>[27.+,)</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
@@ -111,6 +111,7 @@
             <artifactId>lombok</artifactId>
         </dependency>
 
+
     </dependencies>
 
     <build>
@@ -119,6 +120,30 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.6</version>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}/target/classes/config</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${config.path}/</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
 
@@ -127,6 +152,7 @@
             <id>dev</id><!-- 开发环境 -->
             <properties>
                 <package.target>dev</package.target>
+                <config.path>src/main/resources/config/dev</config.path>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -136,16 +162,16 @@
             <id>prod</id><!-- 生产环境 -->
             <properties>
                 <package.target>prod</package.target>
+                <config.path>src/main/resources/config/prod</config.path>
             </properties>
         </profile>
         <profile>
             <id>test</id><!-- 测试环境 -->
             <properties>
                 <package.target>test</package.target>
+                <config.path>src/main/resources/config/test</config.path>
             </properties>
         </profile>
     </profiles>
-
-
 
 </project>
