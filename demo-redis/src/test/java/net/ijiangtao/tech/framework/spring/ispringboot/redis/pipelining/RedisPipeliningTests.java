@@ -31,48 +31,41 @@ public class RedisPipeliningTests {
 
     private static final String RLIST = "test_redis_list";
 
+    /**
+     * 队列 10万次leftPush+10万次rightPop，使用和不使用管道耗时对比，用时对比
+     */
     @Test
-    public void contextLoads() {
+    public void test1() {
 
-        log.info("begin .............. ");
-        Instant beginTime = Instant.now();
-
-        ListOperations<String, String> listOperations = redisTemplate.opsForList();
-
-        //10 万次 leftPush 用时 17 秒
-//        for (int i = 0; i < (10 * 10000); i++) {
-//            listOperations.leftPush(RLIST, i + "");
-//        }
-
-        //10 万次 leftPop 用时 17 秒
-//        for (int i = 0; i < (10 * 10000); i++) {
-//            listOperations.leftPop(RLIST);
-//        }
-
-        //10 万次 leftPush 用时 17 秒
-//        redisTemplate.executePipelined(new RedisCallback<Object>() {
-//            @Override
-//            public Object doInRedis(RedisConnection var1) throws DataAccessException {
-//                for (int i = 0; i < (10 * 10000); i++) {
-//                    listOperations.leftPush(RLIST, i + "");
-//                }
-//                return null;
-//            }
-//        });
-
-        //10 万次 leftPush 用时 17 秒
+        //10万次leftPush+10万次rightPop 用时 5秒 7秒
+        Instant beginTime2 = Instant.now();
         redisTemplate.executePipelined(new RedisCallback<Object>() {
             @Override
-            public Object doInRedis(RedisConnection var1) throws DataAccessException {
+            public Object doInRedis(RedisConnection connection) throws DataAccessException {
                 for (int i = 0; i < (10 * 10000); i++) {
-                    listOperations.leftPop(RLIST);
+                    connection.lPush(RLIST.getBytes(),(i + "").getBytes());
+                }
+                for (int i = 0; i < (10 * 10000); i++) {
+                    connection.rPop(RLIST.getBytes());
                 }
                 return null;
             }
         });
+        log.info(" ***************** pipeling time duration : {}", Duration.between(beginTime2, Instant.now()).getSeconds());
 
 
-        log.info("time duration : {}", Duration.between(beginTime, Instant.now()).getSeconds());
+        log.info("begin .............. ");
+        //10万次leftPush+10万次rightPop 用时 33秒 34秒
+        Instant beginTime1 = Instant.now();
+        ListOperations<String, String> listOperations = redisTemplate.opsForList();
+        for (int i = 0; i < (10 * 10000); i++) {
+            listOperations.leftPush(RLIST, i + "");
+        }
+        for (int i = 0; i < (10 * 10000); i++) {
+            listOperations.rightPop(RLIST);
+        }
+        log.info(" ################# no pipeling time duration : {}", Duration.between(beginTime1, Instant.now()).getSeconds());
+
 
     }
 
