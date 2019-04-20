@@ -14,6 +14,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Redis Pipelining
@@ -31,6 +33,44 @@ public class RedisPipeliningTests {
 
     private static final String RLIST = "test_redis_list";
 
+    @Test
+    public void testMget() {
+
+        //redisTemplate.opsForValue().multiSet();
+        redisTemplate.opsForValue().append("mget1","100");
+        redisTemplate.opsForValue().append("mget2","99");
+
+        List<String> keys=new ArrayList<>();
+        keys.add("mget1");
+        keys.add("mget2");
+        List<String> stringList=redisTemplate.opsForValue().multiGet(keys);
+
+        System.out.println(stringList);
+
+    }
+
+    @Test
+    public void test() {
+
+        Instant beginTime2 = Instant.now();
+
+        redisTemplate.executePipelined(new RedisCallback<Object>() {
+            @Override
+            public Object doInRedis(RedisConnection connection) throws DataAccessException {
+                for (int i = 0; i < (10 * 10000); i++) {
+                    connection.lPush(RLIST.getBytes(), (i + "").getBytes());
+                }
+                for (int i = 0; i < (10 * 10000); i++) {
+                    connection.rPop(RLIST.getBytes());
+                }
+                return null;
+            }
+        });
+
+        log.info(" ***************** pipeling time duration : {}", Duration.between(beginTime2, Instant.now()).getSeconds());
+
+    }
+
     /**
      * 队列 10万次leftPush+10万次rightPop，使用和不使用管道耗时对比，用时对比
      */
@@ -43,7 +83,7 @@ public class RedisPipeliningTests {
             @Override
             public Object doInRedis(RedisConnection connection) throws DataAccessException {
                 for (int i = 0; i < (10 * 10000); i++) {
-                    connection.lPush(RLIST.getBytes(),(i + "").getBytes());
+                    connection.lPush(RLIST.getBytes(), (i + "").getBytes());
                 }
                 for (int i = 0; i < (10 * 10000); i++) {
                     connection.rPop(RLIST.getBytes());
