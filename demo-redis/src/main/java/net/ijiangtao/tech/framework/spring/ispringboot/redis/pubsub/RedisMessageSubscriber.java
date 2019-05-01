@@ -1,10 +1,12 @@
 package net.ijiangtao.tech.framework.spring.ispringboot.redis.pubsub;
 
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.redis.connection.Message;
 import org.springframework.data.redis.connection.MessageListener;
-import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
+import org.springframework.stereotype.Component;
 import java.util.List;
 
 /**
@@ -15,12 +17,15 @@ import java.util.List;
  * @author ijiangtao
  * @create 2019-05-01 19:39
  **/
-@Service
+@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@Data
+@Component
 public class RedisMessageSubscriber implements MessageListener {
 
-    public static List<String> messageList = new ArrayList<>();
+    private List<String> messageList;
 
     public void onMessage(Message message, byte[] pattern) {
-        messageList.add(message.toString());
+        messageList.add("[pattern:" + new String(pattern) + ",message:" + message.toString() + "]");
     }
 }

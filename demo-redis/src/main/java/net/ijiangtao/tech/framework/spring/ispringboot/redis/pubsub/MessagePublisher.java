@@ -9,7 +9,6 @@ package net.ijiangtao.tech.framework.spring.ispringboot.redis.pubsub;
 public interface MessagePublisher {
     /**
      * publish message
-     *
      * @param message
      */
     void publish(String message);

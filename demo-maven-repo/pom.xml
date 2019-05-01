@@ -64,9 +64,7 @@
 			<id>ijiangtao-net-repo</id>
 			<!--Human readable name of the repository. -->
 			<name>ijiangtao.net repository</name>
-
 			<url>https://raw.githubusercontent.com/ijiangtao/ijiangtao-net-repo/master/repository</url>
-
 			<releases>
 				<enabled>true</enabled>
 				<checksumPolicy>warn</checksumPolicy>
