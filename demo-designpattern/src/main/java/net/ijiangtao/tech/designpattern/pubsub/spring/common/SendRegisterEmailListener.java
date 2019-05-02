@@ -15,7 +15,6 @@ import java.time.LocalTime;
 @Component
 @Slf4j
 public class SendRegisterEmailListener implements ApplicationListener<RegisterEvent> {
-
     @Override
     public void onApplicationEvent(RegisterEvent event) {
         try {
@@ -23,7 +22,6 @@ public class SendRegisterEmailListener implements ApplicationListener<RegisterEv
         } catch (Exception e) {
             log.error("{}", e);
         }
-
         log.info("SendRegisterEmailListener message: " + event.getMessage()+" time: "+ LocalTime.now());
     }
 

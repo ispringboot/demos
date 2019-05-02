@@ -22,12 +22,9 @@ public class SpringEventsCommonTests {
     @Autowired
     private RegisterEventPublisher registerEventPublisher;
 
-
     @Test
     public void test1(){
-
         registerEventPublisher.publish(" Danny is here.");
-
         try {
             Thread.sleep(10 * 1000);
         } catch (Exception e) {

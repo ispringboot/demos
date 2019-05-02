@@ -1,7 +1,6 @@
 package net.ijiangtao.tech.designpattern.pubsub.spring.async.annotation;
 
 import lombok.Getter;
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.ApplicationEvent;
 
 /**
@@ -16,7 +15,6 @@ public class RegisterEvent extends ApplicationEvent {
     private String message;
 
     public RegisterEvent(Object source, String message) {
-        ApplicationContextAware event;
         super(source);
         this.message = message;
     }

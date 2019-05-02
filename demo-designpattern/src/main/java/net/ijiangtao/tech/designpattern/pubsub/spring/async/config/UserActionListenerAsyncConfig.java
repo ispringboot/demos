@@ -23,7 +23,6 @@ public class UserActionListenerAsyncConfig implements ApplicationListener<Regist
         } catch (Exception e) {
             log.error("{}", e);
         }
-
         log.info("UserActionListener message: " + event.getMessage()+" time: "+ LocalTime.now());
     }
 

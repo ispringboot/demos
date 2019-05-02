@@ -25,7 +25,6 @@ public class UserActionListenerAsyncAnnotation implements ApplicationListener<Re
         } catch (Exception e) {
             log.error("{}", e);
         }
-
         log.info("UserActionListener message: " + event.getMessage()+" time: "+ LocalTime.now());
     }
 

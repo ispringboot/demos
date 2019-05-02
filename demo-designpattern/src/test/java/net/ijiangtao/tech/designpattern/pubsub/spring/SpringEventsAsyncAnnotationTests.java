@@ -24,12 +24,9 @@ public class SpringEventsAsyncAnnotationTests {
     @Autowired
     private RegisterEventPublisherAsyncAnnotation registerEventPublisherAsyncAnnotation;
 
-
     @Test
-    public void test2(){
-
+    public void test2() {
         registerEventPublisherAsyncAnnotation.publish(" Danny is here (Async).");
-
         try {
             Thread.sleep(10 * 1000);
         } catch (Exception e) {

@@ -13,7 +13,7 @@ import java.time.LocalTime;
  * @author ijiangtao
  * @create 2019-05-02 13:01
  **/
-@Component("asyncConfigRegisterEventPublisher")
+@Component
 @Slf4j
 public class RegisterEventPublisherAsyncConfig {
 

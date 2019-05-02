@@ -5,7 +5,6 @@ import org.springframework.context.ApplicationEvent;
 
 /**
  * 注册事件
- *
  * @author ijiangtao
  * @create 2019-05-02 12:59
  **/
