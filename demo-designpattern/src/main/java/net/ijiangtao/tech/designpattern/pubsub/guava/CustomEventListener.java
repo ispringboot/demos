@@ -24,7 +24,7 @@ public class CustomEventListener {
     private List<String> listenedMessageList;
 
     @Subscribe
-    public void stringEvent(CustomEvent event) {
+    public void onEvent(CustomEvent event) {
         log.info("Guava EventListener listened one message : {}", event.getMessage());
         listenedMessageList.add(event.getMessage());
     }
