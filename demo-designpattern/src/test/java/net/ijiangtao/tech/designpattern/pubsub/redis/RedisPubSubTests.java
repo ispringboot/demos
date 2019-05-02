@@ -20,7 +20,7 @@ import java.util.UUID;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @Slf4j
-public class RedisPubSub {
+public class RedisPubSubTests {
 
     @Autowired
     @Qualifier("redisPublisherForTopic1")
