@@ -1,4 +1,4 @@
-package net.ijiangtao.tech.framework.spring.ispringboot.demo.start.configuration;
+package net.ijiangtao.tech.demo.start.configuration;
 
 
 public class MvcConfiguration {

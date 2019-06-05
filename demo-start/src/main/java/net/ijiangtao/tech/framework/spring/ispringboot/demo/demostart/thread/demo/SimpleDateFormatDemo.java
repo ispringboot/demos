@@ -1,4 +1,4 @@
-package net.ijiangtao.tech.framework.spring.ispringboot.demo.demostart.thread.demo;
+package net.ijiangtao.tech.demo.demostart.thread.demo;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

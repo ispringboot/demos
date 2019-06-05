@@ -1,8 +1,8 @@
-package net.ijiangtao.tech.framework.spring.ispringboot.demo.retryer.guava.task;
+package net.ijiangtao.tech.demo.retryer.guava.task;
 
 import com.github.rholder.retry.Retryer;
-import net.ijiangtao.tech.framework.spring.ispringboot.demo.retryer.guava.service.ProductInformationHander;
-import net.ijiangtao.tech.framework.spring.ispringboot.demo.retryer.guava.service.ProductRetryerBuilder;
+import net.ijiangtao.tech.demo.retryer.guava.service.ProductInformationHander;
+import net.ijiangtao.tech.demo.retryer.guava.service.ProductRetryerBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

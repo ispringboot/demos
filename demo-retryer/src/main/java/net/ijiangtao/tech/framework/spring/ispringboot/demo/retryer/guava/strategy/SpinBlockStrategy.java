@@ -1,4 +1,4 @@
-package net.ijiangtao.tech.framework.spring.ispringboot.demo.retryer.guava.strategy;
+package net.ijiangtao.tech.demo.retryer.guava.strategy;
 
 import com.github.rholder.retry.BlockStrategy;
 import lombok.NoArgsConstructor;

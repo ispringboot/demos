@@ -1,4 +1,4 @@
-package net.ijiangtao.tech.framework.spring.ispringboot.demo.retryer.guava.listener;
+package net.ijiangtao.tech.demo.retryer.guava.listener;
 
 import com.github.rholder.retry.Attempt;
 import com.github.rholder.retry.RetryListener;

@@ -1,4 +1,4 @@
-package net.ijiangtao.tech.framework.spring.ispringboot.demo.demostart.jcf;
+package net.ijiangtao.tech.demo.demostart.jcf;
 
 import lombok.AllArgsConstructor;
 import lombok.NonNull;

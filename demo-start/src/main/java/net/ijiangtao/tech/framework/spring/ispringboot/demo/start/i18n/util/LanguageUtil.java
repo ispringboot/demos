@@ -1,4 +1,4 @@
-package net.ijiangtao.tech.framework.spring.ispringboot.demo.start.i18n.util;
+package net.ijiangtao.tech.demo.start.i18n.util;
 
 /**
  * @author ijiangtao.net

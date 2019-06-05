@@ -1,4 +1,4 @@
-package net.ijiangtao.tech.framework.spring.ispringboot.demo.popup;
+package net.ijiangtao.tech.demo.popup;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

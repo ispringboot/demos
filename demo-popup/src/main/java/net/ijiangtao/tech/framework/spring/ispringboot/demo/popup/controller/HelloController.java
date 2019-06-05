@@ -1,4 +1,4 @@
-package net.ijiangtao.tech.framework.spring.ispringboot.demo.popup.controller;
+package net.ijiangtao.tech.demo.popup.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

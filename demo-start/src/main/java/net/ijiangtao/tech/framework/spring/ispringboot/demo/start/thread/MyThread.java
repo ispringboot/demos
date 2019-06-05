@@ -1,4 +1,4 @@
-package net.ijiangtao.tech.framework.spring.ispringboot.demo.demostart.thread;
+package net.ijiangtao.tech.demo.demostart.thread;
 
 import java.io.IOException;
 import java.util.concurrent.*;

@@ -1,8 +1,8 @@
-package net.ijiangtao.tech.framework.spring.ispringboot.demo.demoyaml;
+package net.ijiangtao.tech.demo.demoyaml;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.jsonpath.internal.JsonFormatter;
-import net.ijiangtao.tech.framework.spring.ispringboot.demo.demoyaml.info.InterfaceInformation;
+import net.ijiangtao.tech.demo.demoyaml.info.InterfaceInformation;
 import org.json.JSONObject;
 import org.junit.Test;
 import org.junit.runner.RunWith;

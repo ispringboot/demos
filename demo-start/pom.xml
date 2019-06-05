@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>net.ijiangtao.tech.framework.spring.ispringboot.demo</groupId>
+    <groupId>net.ijiangtao.tech.demo</groupId>
     <artifactId>demo-start</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>demo-start</name>

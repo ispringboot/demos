@@ -1,9 +1,9 @@
-package net.ijiangtao.tech.framework.spring.ispringboot.demo.retryer.guava.service;
+package net.ijiangtao.tech.demo.retryer.guava.service;
 
 import com.github.rholder.retry.*;
-import net.ijiangtao.tech.framework.spring.ispringboot.demo.retryer.guava.exception.NeedRetryException;
-import net.ijiangtao.tech.framework.spring.ispringboot.demo.retryer.guava.listener.RetryLogListener;
-import net.ijiangtao.tech.framework.spring.ispringboot.demo.retryer.guava.strategy.SpinBlockStrategy;
+import net.ijiangtao.tech.demo.retryer.guava.exception.NeedRetryException;
+import net.ijiangtao.tech.demo.retryer.guava.listener.RetryLogListener;
+import net.ijiangtao.tech.demo.retryer.guava.strategy.SpinBlockStrategy;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.TimeUnit;

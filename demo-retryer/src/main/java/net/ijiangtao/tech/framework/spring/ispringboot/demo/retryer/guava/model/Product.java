@@ -1,4 +1,4 @@
-package net.ijiangtao.tech.framework.spring.ispringboot.demo.retryer.guava.model;
+package net.ijiangtao.tech.demo.retryer.guava.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

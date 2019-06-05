@@ -1,4 +1,4 @@
-package net.ijiangtao.tech.framework.spring.ispringboot.demo.demostart.thread.gist;
+package net.ijiangtao.tech.demo.demostart.thread.gist;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 

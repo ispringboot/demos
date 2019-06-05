@@ -1,4 +1,4 @@
-package net.ijiangtao.tech.framework.spring.ispringboot.demo.demologging.controller;
+package net.ijiangtao.tech.demo.demologging.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

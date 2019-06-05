@@ -1,4 +1,4 @@
-package net.ijiangtao.tech.framework.spring.ispringboot.demo.demostart.guava;
+package net.ijiangtao.tech.demo.demostart.guava;
 
 public class LimiterTest {
 

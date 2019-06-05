@@ -1,6 +1,6 @@
-package net.ijiangtao.tech.framework.spring.ispringboot.demo.retryer.guava.repository;
+package net.ijiangtao.tech.demo.retryer.guava.repository;
 
-import net.ijiangtao.tech.framework.spring.ispringboot.demo.retryer.guava.model.Product;
+import net.ijiangtao.tech.demo.retryer.guava.model.Product;
 import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;

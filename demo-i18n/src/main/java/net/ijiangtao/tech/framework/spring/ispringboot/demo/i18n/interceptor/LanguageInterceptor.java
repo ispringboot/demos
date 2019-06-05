@@ -1,7 +1,7 @@
-package net.ijiangtao.tech.framework.spring.ispringboot.demo.i18n.interceptor;
+package net.ijiangtao.tech.demo.i18n.interceptor;
 
 import lombok.extern.slf4j.Slf4j;
-import net.ijiangtao.tech.framework.spring.ispringboot.demo.i18n.util.LanguageUtil;
+import net.ijiangtao.tech.demo.i18n.util.LanguageUtil;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ModelAndView;

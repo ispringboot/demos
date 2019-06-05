@@ -1,4 +1,4 @@
-package net.ijiangtao.tech.framework.spring.ispringboot.demo.demostart.book.ijse9;
+package net.ijiangtao.tech.demo.demostart.book.ijse9;
 
 import java.util.ArrayList;
 

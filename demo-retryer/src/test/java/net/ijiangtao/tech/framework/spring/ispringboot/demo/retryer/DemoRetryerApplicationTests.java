@@ -1,4 +1,4 @@
-package net.ijiangtao.tech.framework.spring.ispringboot.demo.retryer;
+package net.ijiangtao.tech.demo.retryer;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

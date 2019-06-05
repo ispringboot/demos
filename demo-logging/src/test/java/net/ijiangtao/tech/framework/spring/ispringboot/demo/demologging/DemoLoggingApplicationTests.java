@@ -1,4 +1,4 @@
-package net.ijiangtao.tech.framework.spring.ispringboot.demo.demologging;
+package net.ijiangtao.tech.demo.demologging;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

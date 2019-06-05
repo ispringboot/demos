@@ -1,12 +1,12 @@
-package net.ijiangtao.tech.framework.spring.ispringboot.demo.retryer.guava.web.controller;
+package net.ijiangtao.tech.demo.retryer.guava.web.controller;
 
 import com.github.rholder.retry.Retryer;
 import com.github.rholder.retry.RetryerBuilder;
 import com.github.rholder.retry.StopStrategies;
 import com.google.common.base.Predicates;
 import lombok.extern.slf4j.Slf4j;
-import net.ijiangtao.tech.framework.spring.ispringboot.demo.retryer.guava.listener.RetryLogListener;
-import net.ijiangtao.tech.framework.spring.ispringboot.demo.retryer.guava.strategy.AlipayWaitStrategy;
+import net.ijiangtao.tech.demo.retryer.guava.listener.RetryLogListener;
+import net.ijiangtao.tech.demo.retryer.guava.strategy.AlipayWaitStrategy;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 

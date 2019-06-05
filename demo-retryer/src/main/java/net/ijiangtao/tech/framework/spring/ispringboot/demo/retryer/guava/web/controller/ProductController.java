@@ -1,9 +1,9 @@
-package net.ijiangtao.tech.framework.spring.ispringboot.demo.retryer.guava.web.controller;
+package net.ijiangtao.tech.demo.retryer.guava.web.controller;
 
 import com.google.common.base.Strings;
 import lombok.extern.slf4j.Slf4j;
-import net.ijiangtao.tech.framework.spring.ispringboot.demo.retryer.guava.model.Product;
-import net.ijiangtao.tech.framework.spring.ispringboot.demo.retryer.guava.repository.ProductRepository;
+import net.ijiangtao.tech.demo.retryer.guava.model.Product;
+import net.ijiangtao.tech.demo.retryer.guava.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
