@@ -96,7 +96,7 @@
     </appender>
 
     <logger name="org.springframework" additivity="false">
-        <level value="ERROR" />
+        <level value="DEBUG" />
         <appender-ref ref="STDOUT" />
         <appender-ref ref="errorAppender" />
     </logger>

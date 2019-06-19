@@ -39,7 +39,14 @@ public enum ResponseStatus {
     SERVER_ERROR_NOT_IMPLEMENTED("100501001", "Server Error:Not Implemented", 501),
 
     SERVER_ERROR_SERVICE_UNAVAILABLE_ALL("100503001", "Server Error:Service Unavailable", 503),
-    SERVER_ERROR_SERVICE_UNAVAILABLE_PART("100503002", "Server Error:Service Unavailable", 503);
+    SERVER_ERROR_SERVICE_UNAVAILABLE_PART("100503002", "Server Error:Service Unavailable", 503),
+
+    SERVER_ERROR_SERVICE_UNAVAILABLE_PART_2("100503002", "Server Error:Service Unavailable");
+
+    ResponseStatus(String code, String message) {
+        this.code = code;
+        this.message = message;
+    }
 
     ResponseStatus(String code, String message, int httpStatusCode) {
         this.code = code;

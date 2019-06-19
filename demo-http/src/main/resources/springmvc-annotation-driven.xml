@@ -19,10 +19,10 @@
     <!-- Enables the Spring MVC @Controller programming model -->
     <mvc:annotation-driven>
         <mvc:argument-resolvers>
-            <bean class="net.ijiangtao.tech.demo.http.web.response.AuthorityResolver"/>
+            <bean class="net.ijiangtao.tech.demo.http.web.resolver.AuthorityResolver"/>
         </mvc:argument-resolvers>
         <mvc:return-value-handlers>
-            <bean class="net.ijiangtao.tech.demo.http.web.response.ResponseHandler"></bean>
+            <bean class="net.ijiangtao.tech.demo.http.web.handler.ResponseHandler"></bean>
         </mvc:return-value-handlers>
     </mvc:annotation-driven>
 
