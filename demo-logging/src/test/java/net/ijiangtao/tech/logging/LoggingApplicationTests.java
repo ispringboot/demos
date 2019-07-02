@@ -9,9 +9,17 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class LoggingApplicationTests {
 
-	@Test
-	public void contextLoads() {
-	}
+    @Test
+    public void contextLoads() {
+    }
+
+    public static void main(String[] args) {
+//        InputStream in = LoggingApplicationTests.class.getResourceAsStream("LoggingApplicationTests.java");
+//        Scanner scanner=new Scanner(in);
+//        while (scanner.hasNext()){
+//            System.out.println(scanner.next());
+//        }
+    }
 
 }
 

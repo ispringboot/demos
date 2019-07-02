@@ -18,6 +18,23 @@ import java.util.Random;
 @RequestMapping("/user")
 public class UserController {
 
+    @PostMapping("/e")
+    @HttpLog()
+    public APIResponse<User> exception(@RequestBody User user) throws Exception {
+        String token = null;
+        token.equals("");
+
+        user.setId(new Random().nextInt());
+        return APIResponse.build(ResponseStatus.SUCCESS, user);
+    }
+
+    @GetMapping("/get/log")
+    @HttpLog()
+    public APIResponse<User> getLog() {
+        User user = new User();
+        user.setId(new Random().nextInt());
+        return APIResponse.build(ResponseStatus.SUCCESS, user);
+    }
 
     /**
      * curl -X POST --header "Content-Type: application/json" -H 'username:12b4' --data '{"username":"12b4","password":"34ndd"}' -v 'http://localhost:8080/user/log?age=32'

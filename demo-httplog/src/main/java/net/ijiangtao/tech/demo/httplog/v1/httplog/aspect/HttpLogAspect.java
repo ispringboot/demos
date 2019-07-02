@@ -1,26 +1,24 @@
-package net.ijiangtao.tech.logging.api.httplog.aspect;
+package net.ijiangtao.tech.demo.httplog.v1.httplog.aspect;
 
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
-import net.ijiangtao.tech.logging.api.httplog.annotation.HttpLog;
-import net.ijiangtao.tech.logging.api.httplog.domain.ApiHttpLog;
-import net.ijiangtao.tech.logging.api.httplog.event.ApiHttpLogEventPublisher;
-import net.ijiangtao.tech.logging.api.httplog.response.APIResponse;
+import net.ijiangtao.tech.demo.httplog.v1.httplog.bind.ApiResponse;
+import net.ijiangtao.tech.demo.httplog.v1.httplog.event.ApiHttpLogEventPublisher;
+import net.ijiangtao.tech.demo.httplog.v1.httplog.model.ApiHttpLog;
+import net.ijiangtao.tech.demo.httplog.v1.httplog.response.APIResponse;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.annotation.AnnotationUtils;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.ui.Model;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
-import java.lang.reflect.Parameter;
 import java.util.*;
 
 /**
@@ -31,7 +29,7 @@ import java.util.*;
  **/
 @Aspect
 @Slf4j
-public class HttpLogAspectV1 {
+public class HttpLogAspect {
 
     @Autowired
     private ApiHttpLogEventPublisher publisher;
@@ -46,9 +44,9 @@ public class HttpLogAspectV1 {
     /**
      * 注解切点
      */
-    @Pointcut("@annotation(net.ijiangtao.tech.logging.api.httplog.annotation.HttpLog)")
+    @Pointcut("@annotation(net.ijiangtao.tech.demo.httplog.v1.httplog.bind.ApiResponse)")
     public void logAnnotation() {
-        log.debug("log annnotation...");
+        log.debug("@ApiResponse annnotation ... ");
     }
 
     /**
@@ -60,13 +58,19 @@ public class HttpLogAspectV1 {
     public void requestLog(JoinPoint joinPoint) {
         ApiHttpLog apiHttpLog = apiHttpLogThreadLocal.get();
         try {
-            HttpLog httpLog = getLogAnnotation(joinPoint);
-            if (null == httpLog || httpLog.ignoreRequest()) {
+            //ApiResponse 注解
+            ApiResponse apiResponse = getLogAnnotation(joinPoint);
+            apiHttpLog.setApiResponse(apiResponse);
+
+            //日志创建时间
+            apiHttpLog.setCreatedTime(new Date());
+            if (null == apiResponse || apiResponse.ignoreHttpLog() || apiResponse.ignoreRequestHttpLog()) {
                 return;
             }
 
             HttpServletRequest request = getRequest();
 
+            //日志追踪id: SessionId-UUID
             String traceId = request.getRequestedSessionId() + "-" + UUID.randomUUID().toString().replace("-", "");
             apiHttpLog.setTraceId(traceId);
             apiHttpLog.setStartTime(System.currentTimeMillis());
@@ -74,11 +78,11 @@ public class HttpLogAspectV1 {
             // ApiHttpLog: HttpMethod
             apiHttpLog.setHttpMethod(request.getMethod());
 
-            // ApiHttpLog: RequestPat
+            // ApiHttpLog: RequestPath
             apiHttpLog.setRequestPath(getRequestPath(request));
 
             // ApiHttpLog: requestParameters json
-            List<String> excludes = Arrays.asList(httpLog.exclude());
+            List<String> excludes = Arrays.asList(apiResponse.excludeRequestParametersHttpLog());
             Map<String, String[]> parameterMap = request.getParameterMap();
             for (Map.Entry<String, String[]> entry : parameterMap.entrySet()) {
                 Map<String, String[]> requestParameters = new HashMap<>();
@@ -89,18 +93,20 @@ public class HttpLogAspectV1 {
             }
 
             // ApiHttpLog: requestHeaders json
-            if (httpLog.headerParams().length > 0) {
+            if (apiResponse.includeRequestHeadersHttpLog().length > 0) {
                 Map<String, String> requestHeaders = new HashMap<>();
-                for (String headerName : httpLog.headerParams()) {
+                for (String headerName : apiResponse.includeRequestHeadersHttpLog()) {
                     requestHeaders.put(headerName, request.getHeader(headerName));
                 }
                 apiHttpLog.setRequestHeaders(JSON.toJSONString(requestHeaders));
             }
 
-            // ApiHttpLog: requestBody json
-            Object[] requestBody = getRequestBodyParam(joinPoint);
-            if (null != requestBody) {
-                apiHttpLog.setRequestBody(JSON.toJSONString(requestBody));
+            // ApiHttpLog: method parameter list json
+            if (!apiResponse.ignoreAllMethdParameters()) {
+                Map<String, Object> methodParameterMap = getMethodParameters(joinPoint, apiResponse);
+                if (null != methodParameterMap) {
+                    apiHttpLog.setMethodParameters(JSON.toJSONString(methodParameterMap));
+                }
             }
 
         } catch (Exception exception) {
@@ -111,21 +117,21 @@ public class HttpLogAspectV1 {
     }
 
     /**
-     * 记录resposne日志
+     * 记录resposne日志: 返回值伟标准的 APIResponse 对象
      *
      * @param joinPoint
-     * @param APIResponse
+     * @param aPIResponse
      */
-    @AfterReturning(returning = "APIResponse", pointcut = "logAnnotation()")
-    public void responseLog(JoinPoint joinPoint, APIResponse APIResponse) {
+    @AfterReturning(returning = "aPIResponse", pointcut = "logAnnotation()")
+    public void responseLog(JoinPoint joinPoint, APIResponse aPIResponse) {
         try {
-            HttpLog httpLog = getLogAnnotation(joinPoint);
-            if (null == httpLog || httpLog.ignoreResponse()) {
+            ApiResponse apiResponse = apiHttpLogThreadLocal.get().getApiResponse();
+            if (null == apiResponse || apiResponse.ignoreHttpLog() || apiResponse.ignoreResponseHttpLog()) {
                 return;
             }
-            // 记录 response
+
             ApiHttpLog apiHttpLog = apiHttpLogThreadLocal.get();
-            apiHttpLog.setResponseBody(JSON.toJSONString(APIResponse));
+            apiHttpLog.setResponseBody(JSON.toJSONString(aPIResponse));
 
         } catch (Exception exception) {
             log.error("save http log exception", exception);
@@ -138,11 +144,13 @@ public class HttpLogAspectV1 {
      * 异步保存日志
      */
     private void finallyBlock() {
+
         ApiHttpLog apiHttpLog = apiHttpLogThreadLocal.get();
         apiHttpLog.setCompletionTime(System.currentTimeMillis());
         apiHttpLog.setCostTime(costTime());
-        apiHttpLog.setCreatedTime(new Date());
+
         publisher.publish(apiHttpLog);
+
         apiHttpLogThreadLocal.remove();
     }
 
@@ -155,17 +163,15 @@ public class HttpLogAspectV1 {
     @AfterThrowing(throwing = "e", pointcut = "logAnnotation()")
     public void throwing(JoinPoint joinPoint, Exception e) {
         try {
-            HttpLog httpLog = getLogAnnotation(joinPoint);
-            if (null == httpLog || httpLog.ignoreException()) {
+            ApiResponse apiResponse = apiHttpLogThreadLocal.get().getApiResponse();
+            if (null == apiResponse || apiResponse.ignoreHttpLog() || apiResponse.ignoreExceptionHttpLog()) {
                 return;
             }
 
-            // 记录Exception
             ApiHttpLog apiHttpLog = apiHttpLogThreadLocal.get();
             if (null != apiHttpLog) {
                 apiHttpLog.setResponseBody(JSON.toJSONString(e));
             }
-
         } catch (Exception exception) {
             log.error("save http log exception", exception);
         } finally {
@@ -173,14 +179,14 @@ public class HttpLogAspectV1 {
         }
     }
 
-    private HttpLog getLogAnnotation(JoinPoint joinPoint) {
+    private ApiResponse getLogAnnotation(JoinPoint joinPoint) {
         if (joinPoint instanceof MethodInvocationProceedingJoinPoint) {
             Signature signature = joinPoint.getSignature();
             if (signature instanceof MethodSignature) {
                 MethodSignature methodSignature = (MethodSignature) signature;
                 Method method = methodSignature.getMethod();
-                if (method.isAnnotationPresent(HttpLog.class)) {
-                    return method.getAnnotation(HttpLog.class);
+                if (method.isAnnotationPresent(ApiResponse.class)) {
+                    return method.getAnnotation(ApiResponse.class);
                 }
             }
         }
@@ -188,21 +194,54 @@ public class HttpLogAspectV1 {
     }
 
     /**
-     * 获取 RequestBody
+     * 获取
      *
      * @param joinPoint
      * @return
      */
-    private Object[] getRequestBodyParam(JoinPoint joinPoint) {
+    private Map<String, Object> getMethodParameters(JoinPoint joinPoint, ApiResponse apiResponse) {
+
         if (joinPoint instanceof MethodInvocationProceedingJoinPoint) {
             Signature signature = joinPoint.getSignature();
             if (signature instanceof MethodSignature) {
+
                 MethodSignature methodSignature = (MethodSignature) signature;
                 Method method = methodSignature.getMethod();
-                Parameter[] methodParameters = method.getParameters();
-                if (null != methodParameters && Arrays.stream(methodParameters).anyMatch(p -> AnnotationUtils.findAnnotation(p, RequestBody.class) != null)) {
-                    return joinPoint.getArgs();
+
+                String[] parameterNames = methodSignature.getParameterNames();
+                Class[] parameterTypes = method.getParameterTypes();
+                Object[] args = joinPoint.getArgs();
+
+                if (null == parameterTypes || null == args || args.length < 1 || parameterTypes.length != args.length) {
+                    return null;
                 }
+
+                List<String> excludeMethdParameters = Arrays.asList(apiResponse.excludeMethdParameters());
+                Map<String, Object> methodParameterMap = new HashMap<>();
+                for (int i = 0; i < args.length; i++) {
+
+                    //默认不需要记录的参数
+                    Class parameterType = parameterTypes[i];
+                    if ("javax.servlet.http.HttpServletResponse".equalsIgnoreCase(parameterType.getName())) {
+                        continue;
+                    }
+                    if (HttpServletRequest.class == parameterType) {
+                        continue;
+                    }
+                    if (Model.class == parameterType) {
+                        continue;
+                    }
+
+                    //根据配置不需要记录的参数
+                    if (excludeMethdParameters.contains(parameterNames[i])) {
+                        continue;
+                    }
+
+                    methodParameterMap.put(parameterNames[i], args[i]);
+                }
+
+                return methodParameterMap;
+
             }
         }
         return null;
