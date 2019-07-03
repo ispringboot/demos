@@ -1,5 +1,6 @@
 package net.ijiangtao.tech.demo.httplog.v1.httplog.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import net.ijiangtao.tech.demo.httplog.v1.httplog.bind.ApiResponse;
 import net.ijiangtao.tech.demo.httplog.v1.httplog.response.APIResponse;
 import net.ijiangtao.tech.demo.httplog.v1.httplog.response.ResponseStatus;
@@ -17,6 +18,7 @@ import java.util.concurrent.Callable;
  * @author ijiangtao
  * @create 2019-07-02 14:48
  **/
+@Slf4j
 @RestController
 public class HttpLogController {
 
@@ -95,7 +97,18 @@ public class HttpLogController {
             }
         };
 
-        return new WebAsyncTask<APIResponse<String>>(callable);
+        WebAsyncTask<APIResponse<String>> webAsyncTask = new WebAsyncTask<APIResponse<String>>(5 * 1000, callable);
+
+        webAsyncTask.onCompletion(new Runnable() {
+            @Override
+            public void run() {
+                log.info("webAsyncTask.onCompletion");
+            }
+        });
+
+        log.info("do some thing else");
+
+        return webAsyncTask;
 
     }
 
