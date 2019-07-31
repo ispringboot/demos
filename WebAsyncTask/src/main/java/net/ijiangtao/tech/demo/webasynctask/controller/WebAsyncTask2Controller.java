@@ -19,7 +19,7 @@ import java.util.concurrent.Callable;
  **/
 @RestController
 public class WebAsyncTask2Controller {
-    
+
     @GetMapping("/r3")
     public WebAsyncTask<Map<String, String>> r2() {
 
