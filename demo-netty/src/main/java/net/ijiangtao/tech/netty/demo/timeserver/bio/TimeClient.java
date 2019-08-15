@@ -1,4 +1,4 @@
-package net.ijiangtao.tech.netty.demo.bio;
+package net.ijiangtao.tech.netty.demo.timeserver.bio;
 
 import lombok.extern.slf4j.Slf4j;
 

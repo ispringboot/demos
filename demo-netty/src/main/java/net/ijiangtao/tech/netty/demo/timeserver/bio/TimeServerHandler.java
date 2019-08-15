@@ -1,4 +1,4 @@
-package net.ijiangtao.tech.netty.demo.bio.pool;
+package net.ijiangtao.tech.netty.demo.timeserver.bio;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -21,7 +21,7 @@ import java.time.format.DateTimeFormatter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Slf4j
-public class TimeServerPoolHandler implements Runnable {
+public class TimeServerHandler implements Runnable {
 
     private Socket socket;
 

@@ -1,6 +1,7 @@
-package net.ijiangtao.tech.netty.demo.bio;
+package net.ijiangtao.tech.netty.demo.timeserver.bio.pool;
 
 import lombok.extern.slf4j.Slf4j;
+import net.ijiangtao.tech.netty.demo.timeserver.bio.TimeServerHandler;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -17,7 +18,7 @@ import java.net.Socket;
  * @create 2019-07-31 13:57
  **/
 @Slf4j
-public class TimeServer {
+public class TimeServerPool {
 
     public static void main(String[] args) {
 
@@ -32,12 +33,15 @@ public class TimeServer {
 
         //--------------------------------------
 
+        TimeServerPoolHandler timeServerPoolHandler=new TimeServerPoolHandler();
+
         try (ServerSocket server = new ServerSocket(port);) {
             Socket socket = null;
             while (true) {
                 //如果没有客户端接入，程序会阻塞在`accept()`方法上
                 socket = server.accept();
                 new Thread(new TimeServerHandler(socket)).start();
+                timeServerPoolHandler.execute(new TimeServerHandler(socket));
             }
         } catch (IOException e) {
             log.error("", e);
