@@ -53,4 +53,45 @@ public class UserManagerImpl implements UserManager {
         }
     }
 
+    //--------------------------------------------------------------
+    //事务回滚
+    @Transactional
+    @Override
+    public void test1(UserEntity user) {
+        userMapper.insert(user);
+        throw new RuntimeException();
+    }
+
+    //--------------------------------------------------------------
+    //如下事务不会回滚
+    @Override
+    public void test2(UserEntity user) {
+        test22(user);
+    }
+
+    @Transactional
+    private void test22(UserEntity user) {
+        userMapper.insert(user);
+        throw new RuntimeException();
+    }
+
+    //--------------------------------------------------------------
+    //如下事务不会回滚
+    @Transactional
+    public void test3(UserEntity user3, UserEntity user4) {
+        userMapper.insert(user3);
+        try {
+            test4(user4);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Transactional
+    public void test4(UserEntity user4) {
+        userMapper.insert(user4);
+        throw new RuntimeException();
+    }
+
+
 }
