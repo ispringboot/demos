@@ -8,7 +8,7 @@
 		<version>2.1.4.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>net.ijiangtao.tech.framework.spring.ispringboot</groupId>
+	<groupId>net.ijiangtao.tech.ispringboot</groupId>
 	<artifactId>demo-redis</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>demo-redis</name>

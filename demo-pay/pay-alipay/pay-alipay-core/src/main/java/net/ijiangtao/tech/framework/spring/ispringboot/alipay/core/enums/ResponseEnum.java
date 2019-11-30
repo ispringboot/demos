@@ -1,4 +1,4 @@
-package net.ijiangtao.tech.framework.spring.ispringboot.alipay.core.enums;
+package net.ijiangtao.tech.ispringboot.alipay.core.enums;
 
 import lombok.Getter;
 

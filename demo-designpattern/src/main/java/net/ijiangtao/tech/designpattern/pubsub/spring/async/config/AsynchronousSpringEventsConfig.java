@@ -26,9 +26,12 @@ public class AsynchronousSpringEventsConfig {
     public ApplicationEventMulticaster simpleApplicationEventMulticaster() {
         SimpleApplicationEventMulticaster eventMulticaster = new SimpleApplicationEventMulticaster();
 
-
+        //使用默认的异步事件处理器
         //eventMulticaster.setTaskExecutor(new SimpleAsyncTaskExecutor());
+
+        //自定义事件处理器
         eventMulticaster.setTaskExecutor(taskExecutor());
+
         return eventMulticaster;
     }
 

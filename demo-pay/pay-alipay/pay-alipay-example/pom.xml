@@ -10,7 +10,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	
-	<groupId>net.ijiangtao.tech.framework.spring.ispringboot</groupId>
+	<groupId>net.ijiangtao.tech.ispringboot</groupId>
 	<artifactId>pay-alipay-example</artifactId>
 	<version>0.0.1</version>
 	
@@ -28,7 +28,7 @@
 	<dependencies>
 
 		<dependency>
-			<groupId>net.ijiangtao.tech.framework.spring.ispringboot</groupId>
+			<groupId>net.ijiangtao.tech.ispringboot</groupId>
 			<artifactId>pay-alipay-starter</artifactId>
 			<version>0.0.1</version>
 		</dependency>

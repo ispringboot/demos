@@ -1,4 +1,4 @@
-package net.ijiangtao.tech.framework.spring.ispringboot.alipay.core.config;
+package net.ijiangtao.tech.ispringboot.alipay.core.config;
 
 import lombok.Data;
 

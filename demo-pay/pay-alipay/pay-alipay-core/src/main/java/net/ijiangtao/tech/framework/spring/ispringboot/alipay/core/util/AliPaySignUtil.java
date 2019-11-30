@@ -1,11 +1,11 @@
-package net.ijiangtao.tech.framework.spring.ispringboot.alipay.core.util;
+package net.ijiangtao.tech.ispringboot.alipay.core.util;
 
 import com.alibaba.fastjson.JSON;
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.internal.util.AlipaySignature;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import net.ijiangtao.tech.framework.spring.ispringboot.alipay.core.config.AliPayProperties;
+import net.ijiangtao.tech.ispringboot.alipay.core.config.AliPayProperties;
 
 import java.util.Map;
 

@@ -77,7 +77,8 @@ public class UserManagerTests {
     @Test
     public void test7() {
         UserEntity u71 = new UserEntity("71", "a123456", UserSexEnum.MAN);
-        UserEntity u72 = new UserEntity("72", "a123456", UserSexEnum.MAN);
+        UserEntity u72 = new UserEntity("72", "b123456", UserSexEnum.MAN);
+        UserEntity u73 = new UserEntity("73", "c123456", UserSexEnum.MAN);
         try {
             userServiceB.test7(u71, new ExceptionA());
         } catch (Exception e) {
@@ -85,6 +86,11 @@ public class UserManagerTests {
         }
         try {
             userServiceB.test7(u72, new ExceptionB());
+        } catch (Exception e) {
+            log.error("", e);
+        }
+        try {
+            userServiceB.test7(u73, new ExceptionC());
         } catch (Exception e) {
             log.error("", e);
         }

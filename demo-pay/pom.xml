@@ -10,7 +10,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	
-	<groupId>net.ijiangtao.tech.framework.spring.ispringboot</groupId>
+	<groupId>net.ijiangtao.tech.ispringboot</groupId>
 	<artifactId>demo-pay</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	

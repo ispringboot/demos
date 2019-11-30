@@ -6,12 +6,12 @@
     <modelVersion>4.0.0</modelVersion>
 	
     <parent>
-        <groupId>net.ijiangtao.tech.framework.spring.ispringboot</groupId>
+        <groupId>net.ijiangtao.tech.ispringboot</groupId>
 		<artifactId>pay-alipay</artifactId>
         <version>0.0.1</version>
     </parent>
 	
-	<groupId>net.ijiangtao.tech.framework.spring.ispringboot</groupId>
+	<groupId>net.ijiangtao.tech.ispringboot</groupId>
 	<artifactId>pay-alipay-core</artifactId>
     <version>0.0.1</version>
 

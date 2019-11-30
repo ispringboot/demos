@@ -1,13 +1,13 @@
-package net.ijiangtao.tech.framework.spring.ispringboot.alipay.starter.configuration;
+package net.ijiangtao.tech.ispringboot.alipay.starter.configuration;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import net.ijiangtao.tech.framework.spring.ispringboot.alipay.core.api.PCPagePay;
-import net.ijiangtao.tech.framework.spring.ispringboot.alipay.core.builder.AliPayBuilder;
-import net.ijiangtao.tech.framework.spring.ispringboot.alipay.core.config.AliPayProperties;
-import net.ijiangtao.tech.framework.spring.ispringboot.alipay.core.util.AliPaySignUtil;
+import net.ijiangtao.tech.ispringboot.alipay.core.api.PCPagePay;
+import net.ijiangtao.tech.ispringboot.alipay.core.builder.AliPayBuilder;
+import net.ijiangtao.tech.ispringboot.alipay.core.config.AliPayProperties;
+import net.ijiangtao.tech.ispringboot.alipay.core.util.AliPaySignUtil;
 
 /**
  *
@@ -15,7 +15,7 @@ import net.ijiangtao.tech.framework.spring.ispringboot.alipay.core.util.AliPaySi
  * @Date: 2019/01/24 17:37
  */
 @Configuration
-@ComponentScan("net.ijiangtao.tech.framework.spring.ispringboot.alipay.starter")
+@ComponentScan("net.ijiangtao.tech.ispringboot.alipay.starter")
 public class AliPayAutoConfiguration {
 
     @Bean

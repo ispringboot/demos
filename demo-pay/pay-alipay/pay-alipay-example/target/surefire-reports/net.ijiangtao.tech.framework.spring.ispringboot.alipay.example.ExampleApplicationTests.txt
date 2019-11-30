@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
-Test set: net.ijiangtao.tech.framework.spring.ispringboot.alipay.example.ExampleApplicationTests
+Test set: net.ijiangtao.tech.ispringboot.alipay.example.ExampleApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 2.416 s <<< FAILURE! - in net.ijiangtao.tech.framework.spring.ispringboot.alipay.example.ExampleApplicationTests
-contextLoads(net.ijiangtao.tech.framework.spring.ispringboot.alipay.example.ExampleApplicationTests)  Time elapsed: 0.002 s  <<< ERROR!
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 2.416 s <<< FAILURE! - in net.ijiangtao.tech.ispringboot.alipay.example.ExampleApplicationTests
+contextLoads(net.ijiangtao.tech.ispringboot.alipay.example.ExampleApplicationTests)  Time elapsed: 0.002 s  <<< ERROR!
 java.lang.IllegalStateException: Failed to load ApplicationContext
 Caused by: java.lang.IllegalStateException: Unable to read meta-data for class white.fisher.alipay.starter.configuration.AliPayAutoConfiguration
 Caused by: java.io.FileNotFoundException: class path resource [white/fisher/alipay/starter/configuration/AliPayAutoConfiguration.class] cannot be opened because it does not exist

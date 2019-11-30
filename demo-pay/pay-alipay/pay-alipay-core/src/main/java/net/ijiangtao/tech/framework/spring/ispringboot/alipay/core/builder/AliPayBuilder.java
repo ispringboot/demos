@@ -1,12 +1,12 @@
-package net.ijiangtao.tech.framework.spring.ispringboot.alipay.core.builder;
+package net.ijiangtao.tech.ispringboot.alipay.core.builder;
 
 import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
 import lombok.Setter;
-import net.ijiangtao.tech.framework.spring.ispringboot.alipay.core.api.PCPagePay;
-import net.ijiangtao.tech.framework.spring.ispringboot.alipay.core.api.impl.PCPagePayImpl;
-import net.ijiangtao.tech.framework.spring.ispringboot.alipay.core.util.AliPaySignUtil;
-import net.ijiangtao.tech.framework.spring.ispringboot.alipay.core.config.AliPayProperties;
+import net.ijiangtao.tech.ispringboot.alipay.core.api.PCPagePay;
+import net.ijiangtao.tech.ispringboot.alipay.core.api.impl.PCPagePayImpl;
+import net.ijiangtao.tech.ispringboot.alipay.core.util.AliPaySignUtil;
+import net.ijiangtao.tech.ispringboot.alipay.core.config.AliPayProperties;
 
 import java.util.Objects;
 

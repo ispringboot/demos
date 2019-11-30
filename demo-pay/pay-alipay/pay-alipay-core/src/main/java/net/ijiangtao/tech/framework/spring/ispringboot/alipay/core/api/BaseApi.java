@@ -1,4 +1,4 @@
-package net.ijiangtao.tech.framework.spring.ispringboot.alipay.core.api;
+package net.ijiangtao.tech.ispringboot.alipay.core.api;
 
 import com.alipay.api.AlipayClient;
 

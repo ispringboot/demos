@@ -1,4 +1,4 @@
-package net.ijiangtao.tech.framework.spring.ispringboot.alipay.example.web;
+package net.ijiangtao.tech.ispringboot.alipay.example.web;
 
 import com.alibaba.fastjson.JSON;
 
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import net.ijiangtao.tech.framework.spring.ispringboot.alipay.core.util.AliPaySignUtil;
+import net.ijiangtao.tech.ispringboot.alipay.core.util.AliPaySignUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

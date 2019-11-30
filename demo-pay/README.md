@@ -12,7 +12,7 @@ Spring Boot起步依赖
 
 1. 引入依赖
 		<dependency>
-			<groupId>net.ijiangtao.tech.framework.spring.ispringboot</groupId>
+			<groupId>net.ijiangtao.tech.ispringboot</groupId>
 			<artifactId>alipay-starter</artifactId>
 			<version>0.0.1</version>
 		</dependency>

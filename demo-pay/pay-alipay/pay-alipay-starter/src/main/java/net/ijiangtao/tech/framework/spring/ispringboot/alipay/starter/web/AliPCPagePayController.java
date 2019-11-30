@@ -1,7 +1,7 @@
-package net.ijiangtao.tech.framework.spring.ispringboot.alipay.starter.web;
+package net.ijiangtao.tech.ispringboot.alipay.starter.web;
 
 import com.alipay.api.response.*;
-import net.ijiangtao.tech.framework.spring.ispringboot.alipay.starter.domain.*;
+import net.ijiangtao.tech.ispringboot.alipay.starter.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -9,8 +9,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import net.ijiangtao.tech.framework.spring.ispringboot.alipay.core.api.PCPagePay;
-import net.ijiangtao.tech.framework.spring.ispringboot.alipay.starter.domain.*;
+import net.ijiangtao.tech.ispringboot.alipay.core.api.PCPagePay;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;

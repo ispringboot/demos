@@ -1,1 +1,1 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=net.ijiangtao.tech.framework.spring.ispringboot.alipay.starter.configuration.AliPayAutoConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=net.ijiangtao.tech.ispringboot.alipay.starter.configuration.AliPayAutoConfiguration

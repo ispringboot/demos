@@ -1,4 +1,4 @@
-package net.ijiangtao.tech.framework.spring.ispringboot.alipay.core.api.impl;
+package net.ijiangtao.tech.ispringboot.alipay.core.api.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alipay.api.AlipayApiException;
@@ -6,10 +6,9 @@ import com.alipay.api.AlipayClient;
 import com.alipay.api.request.*;
 import com.alipay.api.response.*;
 import lombok.extern.slf4j.Slf4j;
-import net.ijiangtao.tech.framework.spring.ispringboot.alipay.core.api.PCPagePay;
-import net.ijiangtao.tech.framework.spring.ispringboot.alipay.core.domain.*;
-import net.ijiangtao.tech.framework.spring.ispringboot.alipay.core.domain.*;
-import net.ijiangtao.tech.framework.spring.ispringboot.alipay.core.enums.ResponseEnum;
+import net.ijiangtao.tech.ispringboot.alipay.core.api.PCPagePay;
+import net.ijiangtao.tech.ispringboot.alipay.core.domain.*;
+import net.ijiangtao.tech.ispringboot.alipay.core.enums.ResponseEnum;
 
 /**
  *

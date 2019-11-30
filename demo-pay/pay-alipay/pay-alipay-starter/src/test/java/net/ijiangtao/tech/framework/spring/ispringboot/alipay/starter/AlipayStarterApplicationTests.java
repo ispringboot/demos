@@ -1,4 +1,4 @@
-package net.ijiangtao.tech.framework.spring.ispringboot.alipay.starter;
+package net.ijiangtao.tech.ispringboot.alipay.starter;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,7 +1,7 @@
-package net.ijiangtao.tech.framework.spring.ispringboot.alipay.starter.domain;
+package net.ijiangtao.tech.ispringboot.alipay.starter.domain;
 
 import lombok.Data;
-import net.ijiangtao.tech.framework.spring.ispringboot.alipay.core.domain.PagePayDTO;
+import net.ijiangtao.tech.ispringboot.alipay.core.domain.PagePayDTO;
 
 import javax.validation.constraints.NotNull;
 

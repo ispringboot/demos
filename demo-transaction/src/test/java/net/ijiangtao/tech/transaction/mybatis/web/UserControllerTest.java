@@ -34,7 +34,7 @@ public class UserControllerTest {
     public void getUsers() throws Exception {
 
         mockMvc.perform(//
-                MockMvcRequestBuilders.post("/getUsers")
+                MockMvcRequestBuilders.post("/delivery")
                 .accept(MediaType.APPLICATION_JSON_UTF8))
                 .andDo(print());
 

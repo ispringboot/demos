@@ -1,6 +1,6 @@
-package net.ijiangtao.tech.framework.spring.ispringboot.alipay.starter.domain;
+package net.ijiangtao.tech.ispringboot.alipay.starter.domain;
 
-import net.ijiangtao.tech.framework.spring.ispringboot.alipay.core.domain.RefundDTO;
+import net.ijiangtao.tech.ispringboot.alipay.core.domain.RefundDTO;
 
 import javax.validation.constraints.NotNull;
 

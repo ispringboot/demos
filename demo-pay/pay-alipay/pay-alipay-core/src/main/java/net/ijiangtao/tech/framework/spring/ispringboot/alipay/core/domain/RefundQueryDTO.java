@@ -1,4 +1,4 @@
-package net.ijiangtao.tech.framework.spring.ispringboot.alipay.core.domain;
+package net.ijiangtao.tech.ispringboot.alipay.core.domain;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;
